@@ -1,0 +1,13 @@
+<app-top-bar></app-top-bar>
+<mat-list class="cdk-scroll-viewport">
+  <mat-list-item *ngFor="let xer of xers;trackBy: trackByFn">
+    <span matListItemTitle>
+      <button class="left-align" mat-button (click)="handleProfileClick(xer)">
+        {{ formatName(xer.name) }}
+      </button>
+    </span>
+    <button mat-icon-button  (click)="handleDelete(xer)" color="warn" matListItemMeta>
+      <mat-icon color="warn">delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>

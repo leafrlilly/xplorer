@@ -1,0 +1,59 @@
+@use '@angular/material' as mat;
+@use "sass:map";
+@include mat.core();
+
+$app-primary: mat.define-palette(mat.$blue-gray-palette, 900);
+$app-accent: mat.define-palette(mat.$blue-palette, 800);
+$app-warn: mat.define-palette(mat.$red-palette);
+$primary: map.get($app-primary, "default");
+
+$light-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $app-primary,
+        accent: $app-accent,
+        warn: $app-warn,
+      ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    )
+);
+
+$app-primary-dark:  mat.define-palette(mat.$blue-gray-palette, 900);
+$primary-dark:  map.get($app-primary-dark, "default");
+
+$dark-theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: $app-primary-dark,
+        accent: $app-accent,
+        warn: $app-warn,
+      ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    )
+);
+
+.dark-theme {
+  @include mat.all-component-colors($dark-theme);
+}
+
+body.dark-theme.mat-app-background {
+  background-color: #000000;
+}
+
+body.light-theme.mat-app-background {
+  background-color: #FFFFFF;
+}
+
+.light-theme {
+  @include mat.all-component-colors($light-theme);
+}
+
+html, body {
+  width: 400px;
+  height: 500px;
+  max-width: 400px;
+  max-height: 500px;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
